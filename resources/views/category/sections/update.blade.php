@@ -24,7 +24,7 @@
             <div class="row">
                 <label>Category options</label>
                 <select class="form-control m-1" name="web_priority">
-                    <option value="{{$category['web_priority']}}" selected hidden>Change web priority</option>
+                    <option value="{{$category['web_priority']}}" selected hidden>Change web priority with:</option>
                     @foreach($priorities as $priority)
                         <option value="{{$priority['web_priority']}}">
                             {{$priority['name']}} ({{$priority['web_priority']}})
@@ -32,7 +32,7 @@
                     @endforeach
                 </select>
                 <select class="form-control m-1" name="app_priority">
-                    <option value="{{$category['app_priority']}}" selected hidden>Change app priority</option>
+                    <option value="{{$category['app_priority']}}" selected hidden>Change app priority with:</option>
                     @foreach($priorities as $priority)
                         <option value="{{$priority['app_priority']}}">
                             {{$priority['name']}} ({{$priority['app_priority']}})

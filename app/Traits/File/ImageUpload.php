@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Helpers\File;
+namespace App\Traits\File;
 
 
 use Carbon\Carbon;
@@ -18,8 +18,8 @@ trait ImageUpload
             $request->file('file')->storeAs($path, $name, 'public');
         }
 
-        $imagePath = 'storage/' . $path . $name;
+        $imageUploadPath = 'storage/' . $path . $name;
 
-        return $imagePath;
+        return $imageUploadPath;
     }
 }

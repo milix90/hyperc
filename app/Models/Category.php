@@ -24,14 +24,14 @@ class Category extends Model
         'ui' => 'array'
     ];
 
-    public function scopeParents()
+    public function scopeParents($query)
     {
-        return $this->query()->where('parent', 0);
+        return $query->where('parent', 0);
     }
 
-    public function scopeChild()
+    public function scopeChild($query)
     {
-        return $this->query()->where('parent', '<>', 0);
+        return $query->where('parent', '<>', 0);
     }
 
     public function children()
