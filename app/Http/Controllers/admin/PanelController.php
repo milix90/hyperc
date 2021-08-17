@@ -11,6 +11,7 @@ class PanelController extends Controller
     {
         $links = [
             'admin.category.index' => 'Manage Categories',
+            'api.categories' => 'API Test : Parent Categories',
         ];
 
         return view('dashboard', compact('links'));

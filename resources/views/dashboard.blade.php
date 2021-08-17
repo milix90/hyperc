@@ -10,7 +10,9 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-left">
                             @foreach($links as $link => $name)
-                                <a class="btn btn-primary" href="{{route($link)}}">{{$name}}</a>
+                                <a class="btn btn-primary m-2"
+                                   target="{{str_contains($link,'api') ? '_blank': '_self'}}"
+                                   href="{{route($link)}}">{{$name}}</a>
                             @endforeach
                         </div>
                     </div>

@@ -34,6 +34,13 @@ class Category extends Model
         return $query->where('parent', '<>', 0);
     }
 
+    public function scopeChildren($query, $column = 'app_priority', $sort = 'asc')
+    {
+        return $query->with(['children' => function ($q) use ($column, $sort) {
+            return $q->orderBy($column, $sort)->get();
+        }]);
+    }
+
     public function children()
     {
         return $this->hasMany(self::class, 'parent', 'id')->with('children');

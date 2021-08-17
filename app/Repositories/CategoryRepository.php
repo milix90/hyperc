@@ -28,20 +28,17 @@ class CategoryRepository implements CrudInterface
 
     public function all()
     {
-        /*get all categories containing sub categories(children)
-          and sort them by priority
+        /*get all categories containing sub categories(children) and sort them by priority.
           admin panel sort is according to web priority*/
-        $categories = $this->model->query()
-            ->where('parent', 0)
+        $categories = $this->model->query()->parents()
             ->with(['children' => function ($q) {
                 return $q->orderBy(self::WEB_PRIORITY, self::SORT)->get();
-            }])
-            ->orderBy(self::WEB_PRIORITY, self::SORT)->get();
+            }])->orderBy(self::WEB_PRIORITY, self::SORT)->get();
 
         $results = [
             'links' => [
                 //array key is equal route name
-                'admin.category.create' => 'Create new',
+                'admin.category.create' => 'Create new'
             ],
             'categories' => $categories,
         ];
@@ -121,6 +118,7 @@ class CategoryRepository implements CrudInterface
     public function delete($id)
     {
         $category = $this->model->query()->find($id);
+
         $file = preg_replace('/\D/', '', $category['ui']['background']);
         $dir = 'public/uploads/' . $file;
 
