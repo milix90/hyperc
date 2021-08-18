@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Repositories\Interfaces\CrudInterface;
 use App\Traits\File\ImageUpload;
 use App\Traits\Helper\CategoryHelper;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryRepository implements CrudInterface
@@ -119,10 +118,9 @@ class CategoryRepository implements CrudInterface
     {
         $category = $this->model->query()->find($id);
 
-        $file = preg_replace('/\D/', '', $category['ui']['background']);
-        $dir = 'public/uploads/' . $file;
+        $this->deleteSubCategories($category);
+        $this->deleteCategoryBackgrounds($category);
 
-        Storage::deleteDirectory($dir);
         $category->delete();
     }
 

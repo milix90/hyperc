@@ -12,11 +12,18 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="d-flex justify-content-left">
+                        <div class="float-left">
                             @foreach($results['links'] as $link => $name)
                                 <a class="btn btn-primary" href="{{route($link)}}">{{$name}}</a>
                             @endforeach
                         </div>
+                        @if(count($results['categories']) > 0)
+                        <div class="float-right">
+                            <small class="badge badge-warning">
+                                (by deleting parent category,sub categories will be deleted.)
+                            </small>
+                        </div>
+                        @endif
                     </div>
 
                     <div class="card-body">

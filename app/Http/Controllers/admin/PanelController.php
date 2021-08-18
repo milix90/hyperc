@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PanelController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $links = [
             'admin.category.index' => 'Manage Categories',

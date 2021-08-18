@@ -16,6 +16,9 @@
                             @endforeach
                         </div>
                     </div>
+                    <small class="badge badge-warning mt-5 justify-content-center">
+                        Note: to check API, enter SLUG to end of URL.
+                    </small>
                 </div>
             </div>
         </div>

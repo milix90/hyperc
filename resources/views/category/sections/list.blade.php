@@ -10,7 +10,15 @@
     <td>{{$category->product}}</td>
     <td>
         @foreach($category->ui as $ui => $item)
-            <strong>{{$ui}}:</strong> {{$item}}<br>
+            <strong>{{$ui}}:</strong>
+            @if($ui == 'background')
+                @foreach($item as $type => $value)
+                    <br><strong>---{{$type}}:</strong> {{$value}}
+                @endforeach
+            @else
+                {{$item}}
+            @endif
+            <br>
         @endforeach
     </td>
     <td>
